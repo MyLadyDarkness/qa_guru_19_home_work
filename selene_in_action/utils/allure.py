@@ -1,7 +1,6 @@
 import allure
 from selene import browser
 import requests
-from allure_commons.types import AttachmentType
 import config
 
 
@@ -26,35 +25,14 @@ def attach_bstack_video(session_id):
 
 def attach_bstack_screen():
     allure.attach(
-        browser.driver.get_screenshot_as_png(), #get_screenshot_as_png(),
+        browser.driver.get_screenshot_as_png(),  # get_screenshot_as_png(),
         name='screenshot',
-        attachment_type=AttachmentType.PNG,
+        attachment_type=allure.attachment_type.PNG,
         extension='.png'
     )
 
-def attach_screen():
-    allure.attach(
-        browser.driver.get_screenshot_as_png(),
-        name='screenshot',
-        attachment_type=allure.attachment_type.PNG
-    )
 
-def add_screenshot(browser):
-    png = browser.driver.get_screenshot_as_png()
-    allure.attach(body=png,
-                  name='Screenshot',
-                  attachment_type=allure.attachment_type.PNG)
-
-
-# def add_screenshot(browser):
-#     png = browser.driver.get_screenshot_as_png()
-#     allure.attach(body=png,
-#                   name='screenshot',
-#                   attachment_type=allure.attachment_type.PNG,
-#                   extension='.png')
-
-
-def attach_bstack_source(browser):
+def attach_bstack_source():
     allure.attach(
         browser.driver.page_source,
         name='screen xml dump',

@@ -1,4 +1,6 @@
-pytest
-allure-pytest
-selene>=2.0.0rc4
-Appium-Python-Client
+pytest==8.2.1
+allure-pytest==2.13.5
+selene==2.0.0rc6
+Appium-Python-Client==4.0.0
+requests==2.31.0
+selenium==4.21.0

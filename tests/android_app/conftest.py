@@ -10,8 +10,6 @@ from selene_in_action import utils
 
 from appium import webdriver
 
-from selene_in_action.utils.allure import attach_screen
-
 
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management():
@@ -53,25 +51,14 @@ def mobile_management():
 
     yield
 
-    # allure.attach(
-    #     browser.driver.get_screenshot_as_png(),
-    #     name='screenshot',
-    #     attachment_type=allure.attachment_type.PNG,
-    # )
-    #
-    # allure.attach(
-    #     browser.driver.page_source,
-    #     name='screen xml dump',
-    #     attachment_type=allure.attachment_type.XML,
-    # )
-
     session_id = browser.driver.session_id
+
+    utils.allure.attach_bstack_screen()
+    utils.allure.attach_bstack_source()
 
     with allure.step('tear down app session'):
         browser.quit()
 
-    # attach_screen()
-    utils.allure.attach_bstack_screen()
     utils.allure.attach_bstack_video(session_id)
 
 
